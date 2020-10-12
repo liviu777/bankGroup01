@@ -22,7 +22,7 @@ public class HibernateUtil {
         Configuration configuration = new Configuration();
         Properties settings = new Properties();
         settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-        settings.put(Environment.URL, "jdbc:mysql://localhost:3306/motherdatabase?serverTimezone" +
+        settings.put(Environment.URL, "jdbc:mysql://localhost:3306/bankservice?serverTimezone" +
                 "=UTC");
         settings.put(Environment.USER, "root");
         settings.put(Environment.PASS, "Univers2016");
