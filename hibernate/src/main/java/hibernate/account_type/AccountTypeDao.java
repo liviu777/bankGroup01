@@ -43,27 +43,20 @@ public class AccountTypeDao {
 
     // read
     // find by username
-    public AccountType findByType(String accountType) {
-        AccountType result = null;
+    public List<AccountType> findAll() {
+        List<AccountType> accountTypeList = null;
 
         try (Session session = getSession()) {
             // no transaction needed for read operations
             // HQL hibernate query language
-            String findByType = "FROM AccountType p WHERE p.accountType = :accountType";
-            Query<AccountType> query = session.createQuery(findByType);
-            query.setParameter("accountType", accountType);
+            String hql = "FROM AccountType";
+            Query<AccountType> query = session.createQuery(hql);
+            accountTypeList = query.getResultList();
 
-            List<AccountType> foundAccountTypes = query.getResultList();
-
-            if (foundAccountTypes.isEmpty()) {
-                return result;
-            } else {
-                result = foundAccountTypes.get(0);
-            }
         } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
-        return result;
+        return accountTypeList;
     }
 
     // update
