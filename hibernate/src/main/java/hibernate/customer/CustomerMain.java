@@ -12,8 +12,10 @@ public class CustomerMain {
         customer.setCNP("1900209274477");
         customer.setLastName("Goran");
         customer.setPassword("cucubau");
-        customer.setUsername("baucucu");
+        customer.setUsername("ninonino");
         customer.setEmail("cucubau@gmail.com");
+
+
 
         Session session= HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
