@@ -20,6 +20,7 @@ public class HibernateUtil {
         return configuration.buildSessionFactory(serviceRegistry);
     }
 
+
     private static Configuration createConfig(){
         Configuration configuration = new Configuration();
         Properties settings = new Properties();

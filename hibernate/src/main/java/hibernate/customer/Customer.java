@@ -23,6 +23,7 @@ public class Customer {
     //    public List<BankAccount> getChildren() {
 //        return children;
 //    }
+
 //
 //    public void setChildren(List<BankAccount> children) {
 //        this.children = children;

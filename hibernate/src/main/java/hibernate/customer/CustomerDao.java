@@ -19,6 +19,7 @@ public class CustomerDao {
             transaction = session.beginTransaction();
 
 
+
             session.save(customer);
 
             transaction.commit();
