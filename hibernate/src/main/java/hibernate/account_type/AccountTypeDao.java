@@ -18,6 +18,7 @@ public class AccountTypeDao {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             session = sessionFactory.openSession();
 
+
             transaction = session.beginTransaction();
 
             // generate insert into accountType table

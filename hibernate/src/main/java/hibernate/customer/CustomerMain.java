@@ -17,6 +17,7 @@ public class CustomerMain {
 
 
 
+
         Session session= HibernateUtil.getSessionFactory().openSession();
         Transaction transaction=session.beginTransaction();
 

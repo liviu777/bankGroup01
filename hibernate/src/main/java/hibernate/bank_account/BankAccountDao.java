@@ -18,6 +18,7 @@ public class BankAccountDao {
 
         transaction = session.beginTransaction();
 
+
             session.save(bankAccount);
 
             transaction.commit();

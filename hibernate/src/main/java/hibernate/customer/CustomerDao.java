@@ -18,6 +18,7 @@ public class CustomerDao {
         try (Session session = getSession()) {
             transaction = session.beginTransaction();
 
+
             session.save(customer);
 
             transaction.commit();

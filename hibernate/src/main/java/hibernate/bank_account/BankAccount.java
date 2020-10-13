@@ -17,6 +17,7 @@ public class BankAccount {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "AccountNumber")
     private String AccountNumber;
 
