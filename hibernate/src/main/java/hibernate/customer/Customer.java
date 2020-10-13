@@ -7,8 +7,8 @@ import java.util.List;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
-public class Customer {
 
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CustomerId;
@@ -19,8 +19,7 @@ public class Customer {
     private String Username;
     private String Password;
 
-
-    //    public List<BankAccount> getChildren() {
+//    public List<BankAccount> getChildren() {
 //        return children;
 //    }
 
@@ -31,6 +30,13 @@ public class Customer {
 
     public Customer() {
     }
+
+//    @OneToMany(
+//            mappedBy = "customer",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    private List<BankAccount> children = new ArrayList<>();
+
 
     public void setCustomerId(Long CustomerId) {
         this.CustomerId = CustomerId;

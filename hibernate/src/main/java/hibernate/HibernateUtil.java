@@ -1,6 +1,7 @@
 package hibernate;
 
 import hibernate.account_type.AccountType;
+import hibernate.bank_account.BankAccount;
 import hibernate.customer.Customer;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -28,7 +29,7 @@ public class HibernateUtil {
         settings.put(Environment.URL, "jdbc:mysql://localhost:3306/bankservice?serverTimezone" +
                 "=UTC");
         settings.put(Environment.USER, "root");
-        settings.put(Environment.PASS, "12345");
+        settings.put(Environment.PASS, "23:23soldI");
         settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
         //settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
@@ -36,10 +37,8 @@ public class HibernateUtil {
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(AccountType.class);
         configuration.addAnnotatedClass(Customer.class);
-
+        configuration.addAnnotatedClass(BankAccount.class);
 
         return configuration;
-
     }
-
 }

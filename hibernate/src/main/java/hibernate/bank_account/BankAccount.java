@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "bank_account")
 public class BankAccount {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -99,5 +99,8 @@ public class BankAccount {
                 "id=" + id +
                 ", name='" + id + '\'' +
                 '}';
+    }
+
+    public void createBankAccount(BankAccount bankAccount) {
     }
 }

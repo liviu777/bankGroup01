@@ -9,21 +9,17 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-
 public class CustomerDao {
-
 
     public void createCustomer(Customer customer) {
         Transaction transaction = null;
         try (Session session = getSession()) {
             transaction = session.beginTransaction();
 
-
-
             session.save(customer);
 
             transaction.commit();
-            System.out.println("Customer created ");
+            System.out.println("Customer Id is created");
 
         } catch (HibernateException e) {
             if (transaction != null) {
