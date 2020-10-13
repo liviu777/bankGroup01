@@ -1,24 +1,47 @@
 package hibernate.customer;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import hibernate.bank_account.BankAccount;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
+
+
+
 
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CNP;
+    private String CNP;
     private Long CustomerId;
     private String FirstName;
     private String LastName;
+
+//    public List<BankAccount> getChildren() {
+//        return children;
+//    }
+//
+//    public void setChildren(List<BankAccount> children) {
+//        this.children = children;
+//    }
+
     private String Email;
     private String Username;
     private String Password;
+
+    public Customer() {
+    }
+
+//    @OneToMany(
+//            mappedBy = "customer",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    private List<BankAccount> children = new ArrayList<>();
+
+
 
     public void setCustomerId(Long CustomerId) {
         this.CustomerId = CustomerId;
@@ -28,7 +51,7 @@ public class Customer {
         return CustomerId;
     }
 
-    public Long getCNP() {
+    public String getCNP() {
         return CNP;
     }
 
@@ -52,7 +75,7 @@ public class Customer {
         return Password;
     }
 
-    public void setCNP(Long CNP) {
+    public void setCNP(String CNP) {
         this.CNP = CNP;
     }
 
