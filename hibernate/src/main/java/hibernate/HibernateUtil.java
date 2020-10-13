@@ -1,6 +1,7 @@
 package hibernate;
 
 import hibernate.account_type.AccountType;
+import hibernate.customer.Customer;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.SessionFactory;
@@ -33,6 +34,7 @@ public class HibernateUtil {
 
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(AccountType.class);
+        configuration.addAnnotatedClass(Customer.class);
 
         return configuration;
 

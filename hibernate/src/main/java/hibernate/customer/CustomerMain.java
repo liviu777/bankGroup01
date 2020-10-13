@@ -21,7 +21,7 @@ public class CustomerMain {
         Transaction transaction=session.beginTransaction();
 
       CustomerDao customerDao=new CustomerDao();
-      customerDao.create(customer);
+      customerDao.createCustomer(customer);
 
 
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class CustomerDao {
 
 
-    public void create(Customer customer) {
+    public void createCustomer(Customer customer) {
         Transaction transaction = null;
         try (Session session = getSession()) {
             transaction = session.beginTransaction();
@@ -21,6 +21,7 @@ public class CustomerDao {
             session.save(customer);
 
             transaction.commit();
+            System.out.println("Customer created ");
 
         } catch (HibernateException e) {
             if (transaction != null) {
