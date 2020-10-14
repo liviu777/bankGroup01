@@ -17,10 +17,10 @@ public class MainMenu {
         int option = input.nextInt();
         switch (option) {
             case 1:
-                //customerRegistration();
+                registration();
                 break;
             case 2:
-                //loginFlow();
+                login();
                 break;
         }
         if (option == 1) {
