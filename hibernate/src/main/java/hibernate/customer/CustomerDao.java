@@ -19,7 +19,7 @@ public class CustomerDao {
             session.save(customer);
 
             transaction.commit();
-            System.out.println("Customer Id is created");
+            System.out.println("Customer is saved");
 
         } catch (HibernateException e) {
             if (transaction != null) {
@@ -32,9 +32,9 @@ public class CustomerDao {
         Customer result = null;
 
         try (Session session = getSession()) {
-            String findByUsernameHql = "FROM Customer p WHERE p.firstName = :firstName";
+            String findByUsernameHql = "FROM Customer p WHERE p.username = :username";
             Query<Customer> query = session.createQuery(findByUsernameHql);
-            query.setParameter("firstName", username);
+            query.setParameter("username", username);
 
             List<Customer> foundCustomers = query.getResultList();
 

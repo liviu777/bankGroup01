@@ -1,7 +1,5 @@
 package hibernate.bank_account;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,25 +16,22 @@ public class BankAccount {
     private int id;
 
     @Column(name = "AccountNumber")
-    private String AccountNumber;
+    private String accountNumber;
 
     @Column(name = "IBAN")
     private String IBAN;
 
     @Column(name = "Currency")
-    private String Currency;
-
-    @Column(name = "AccountTypeId")
-    private int AccountTypeId;
+    private String currency;
 
     @Column(name = "AccountBalance")
-    private int AccountBalance;
-
-    @Column(name = "FriendlyName")
-    private String FriendlyName;
+    private int accountBalance;
 
     @Column(name = "CustomerId")
-    private int CustomerId;
+    private int customerId;
+
+    @Column(name = "FriendlyName")
+    private String friendlyName;
 
     public BankAccount() {
     }
@@ -50,11 +45,11 @@ public class BankAccount {
     }
 
     public String getAccountNumber() {
-        return AccountNumber;
+        return accountNumber;
     }
 
     public void setAccountNumber(String accountNumber) {
-        AccountNumber = accountNumber;
+        this.accountNumber = accountNumber;
     }
 
     public String getIBAN() {
@@ -66,59 +61,48 @@ public class BankAccount {
     }
 
     public String getCurrency() {
-        return Currency;
+        return currency;
     }
 
     public void setCurrency(String currency) {
-        Currency = currency;
-    }
-
-    public int getAccountTypeId() {
-        return AccountTypeId;
-    }
-
-    public void setAccountTypeId(int accountTypeId) {
-        AccountTypeId = accountTypeId;
+        this.currency = currency;
     }
 
     public int getAccountBalance() {
-        return AccountBalance;
+        return accountBalance;
     }
 
     public void setAccountBalance(int accountBalance) {
-        AccountBalance = accountBalance;
-    }
-
-    public String getFriendlyName() {
-        return FriendlyName;
-    }
-
-    public void setFriendlyName(String friendlyName) {
-        FriendlyName = friendlyName;
+        this.accountBalance = accountBalance;
     }
 
     public int getCustomerId() {
-        return CustomerId;
+        return customerId;
     }
 
     public void setCustomerId(int customerId) {
-        CustomerId = customerId;
+        this.customerId = customerId;
+    }
+
+    public String getFriendlyName() {
+        return friendlyName;
+    }
+
+    public void setFriendlyName(String friendlyName) {
+        this.friendlyName = friendlyName;
     }
 
     @Override
     public String toString() {
-        String BankAccount;
         return "BankAccount{" +
                 "id=" + id +
-                ", AccountNumber='" + AccountNumber + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
                 ", IBAN='" + IBAN + '\'' +
-                ", Currency='" + Currency + '\'' +
-                ", AccountBalance='" + AccountBalance + '\'' +
-                ", CustomerId='" + CustomerId + '\'' +
-                ", FriendlyName='" + FriendlyName + '\'' +
+                ", currency='" + currency + '\'' +
+                ", accountBalance=" + accountBalance +
+                ", customerId=" + customerId +
+                ", friendlyName='" + friendlyName + '\'' +
                 '}';
     }
 
-    public void createBankAccount(BankAccount bankAccount) {
-    }
 }

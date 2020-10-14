@@ -60,7 +60,45 @@ public class AccountTypeDao {
         }
         return accountTypeList;
     }
+    public void update(Long id, AccountType accountTypeDetails) {
+        AccountType result = null;
+        Transaction transaction = null;
+        try (Session session = getSession()) {
+            AccountType accountTypeToBeUpdated = session.find(AccountType.class, id);
 
+            transaction = session.beginTransaction();
+
+            accountTypeToBeUpdated.setAccountType(accountTypeDetails.getAccountType());
+
+            session.update(accountTypeToBeUpdated);
+
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // delete
+    public void delete(Long id) {
+        Transaction transaction = null;
+        try (Session session = getSession()) {
+            AccountType accountTypeToBeDeleted = session.find(AccountType.class, id);
+
+            transaction = session.beginTransaction();
+
+            session.delete(accountTypeToBeDeleted);
+
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
+    }
     // update
     // change the username of a accountType
 

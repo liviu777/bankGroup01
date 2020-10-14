@@ -6,104 +6,105 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Customer")
-@Table(name = "customer")
+@Table(name = "Customer")
 
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CustomerId;
-    private String FirstName;
-    private String LastName;
+    private Long customerId;
+    private String firstName;
+    private String lastName;
     private String CNP;
-    private String Email;
-    private String Username;
-    private String Password;
+    private String email;
+    private String username;
+    private String password;
 
-//    public List<BankAccount> getChildren() {
-//        return children;
-//    }
 
-//
-//    public void setChildren(List<BankAccount> children) {
-//        this.children = children;
-//    }
 
     public Customer() {
     }
 
-//    @OneToMany(
-//            mappedBy = "customer",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true)
-//    private List<BankAccount> children = new ArrayList<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<BankAccount> bankAccounts = new ArrayList<>();
 
-
-    public void setCustomerId(Long CustomerId) {
-        this.CustomerId = CustomerId;
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
 
     public Long getCustomerId() {
-        return CustomerId;
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCNP() {
         return CNP;
     }
 
-    public String getFirstName() {
-        return FirstName;
-    }
-
-    public String getLastName() {
-        return LastName;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
     public void setCNP(String CNP) {
         this.CNP = CNP;
     }
 
-    public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public String getPassword() {
+        return password;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 
     @Override
     public String toString() {
         return "Customer{" +
-                "CNP=" + CNP +
-                ", CustomerId=" + CustomerId +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Username='" + Username + '\'' +
-                ", Password='" + Password + '\'' +
+                "customerId=" + customerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", CNP='" + CNP + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", bankAccounts=" + bankAccounts +
                 '}';
     }
 }
