@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "BankAccount")
-@Table(name = "bank_account")
+@Table(name = "BankAccount")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +26,17 @@ public class BankAccount {
     @Column(name = "Currency")
     private String Currency;
 
+    @Column(name = "AccountTypeId")
+    private int AccountTypeId;
+
     @Column(name = "AccountBalance")
     private int AccountBalance;
 
-    @Column(name = "CustomerId")
-    private int CustomerId;
-
     @Column(name = "FriendlyName")
     private String FriendlyName;
+
+    @Column(name = "CustomerId")
+    private int CustomerId;
 
     public BankAccount() {
     }
@@ -70,6 +73,14 @@ public class BankAccount {
         Currency = currency;
     }
 
+    public int getAccountTypeId() {
+        return AccountTypeId;
+    }
+
+    public void setAccountTypeId(int accountTypeId) {
+        AccountTypeId = accountTypeId;
+    }
+
     public int getAccountBalance() {
         return AccountBalance;
     }
@@ -78,20 +89,20 @@ public class BankAccount {
         AccountBalance = accountBalance;
     }
 
-    public int getCustomerId() {
-        return CustomerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        CustomerId = customerId;
-    }
-
     public String getFriendlyName() {
         return FriendlyName;
     }
 
     public void setFriendlyName(String friendlyName) {
         FriendlyName = friendlyName;
+    }
+
+    public int getCustomerId() {
+        return CustomerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        CustomerId = customerId;
     }
 
     @Override
