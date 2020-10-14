@@ -4,6 +4,7 @@ import hibernate.HibernateUtil;
 import hibernate.account_type.AccountType;
 import hibernate.account_type.AccountTypeDao;
 import hibernate.bank_account.BankAccount;
+import hibernate.bank_account.BankAccountDao;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 
@@ -24,6 +25,14 @@ public class CustomerMain {
       customerDao.createCustomer(customer);
 
       BankAccount bankAccount = new BankAccount();
+      bankAccount.setAccountNumber("66-77-88");
+      bankAccount.setIBAN("RO49 AAAA 1B31 0075 9384 0000");
+      bankAccount.setCurrency("RON");
+      bankAccount.setAccountBalance(2500);
+      bankAccount.setCustomerId(1133);
+      bankAccount.setFriendlyName("Savings");
+
+      BankAccountDao bankAccountDao = new BankAccountDao();
       bankAccount.createBankAccount(bankAccount);
 
       AccountType accountType2 = new AccountType();

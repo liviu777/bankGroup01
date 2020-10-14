@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class AccountTypeDao {
+
     public void create(AccountType accountType) {
         Session session = null;
         Transaction transaction = null;

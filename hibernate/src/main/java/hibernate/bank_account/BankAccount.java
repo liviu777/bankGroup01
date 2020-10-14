@@ -17,7 +17,6 @@ public class BankAccount {
     @Column(name = "id")
     private int id;
 
-
     @Column(name = "AccountNumber")
     private String AccountNumber;
 
@@ -25,7 +24,7 @@ public class BankAccount {
     private String IBAN;
 
     @Column(name = "Currency")
-    private int Currency;
+    private String Currency;
 
     @Column(name = "AccountBalance")
     private int AccountBalance;
@@ -35,6 +34,9 @@ public class BankAccount {
 
     @Column(name = "FriendlyName")
     private String FriendlyName;
+
+    public BankAccount() {
+    }
 
     public int getId() {
         return id;
@@ -60,11 +62,11 @@ public class BankAccount {
         this.IBAN = IBAN;
     }
 
-    public int getCurrency() {
+    public String getCurrency() {
         return Currency;
     }
 
-    public void setCurrency(int currency) {
+    public void setCurrency(String currency) {
         Currency = currency;
     }
 
@@ -97,7 +99,12 @@ public class BankAccount {
         String BankAccount;
         return "BankAccount{" +
                 "id=" + id +
-                ", name='" + id + '\'' +
+                ", AccountNumber='" + AccountNumber + '\'' +
+                ", IBAN='" + IBAN + '\'' +
+                ", Currency='" + Currency + '\'' +
+                ", AccountBalance='" + AccountBalance + '\'' +
+                ", CustomerId='" + CustomerId + '\'' +
+                ", FriendlyName='" + FriendlyName + '\'' +
                 '}';
     }
 
