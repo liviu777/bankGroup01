@@ -91,13 +91,12 @@ public class MainMenu {
         switch (option) {
             case 1:
                 ///viewPortofolio(customer);
-                //viewBalance;
                 //ana.viewPortofolio;
+                //ana.viewBalance;
                 break;
             case 2:
                 //transferMoney(customer);
                 break;
         }
     }
-
 }

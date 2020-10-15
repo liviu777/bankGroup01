@@ -60,6 +60,8 @@ public class AccountTypeDao {
         }
         return accountTypeList;
     }
+
+    //update
     public void update(Long id, AccountType accountTypeDetails) {
         AccountType result = null;
         Transaction transaction = null;

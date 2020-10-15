@@ -1,10 +1,15 @@
 package hibernate.bank_account;
 
 import hibernate.HibernateUtil;
+import hibernate.account_type.AccountType;
+import hibernate.customer.Customer;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class BankAccountDao {
     //create
@@ -38,74 +43,71 @@ public class BankAccountDao {
 
     //read
     //find by CustomerId
-//    public BankAccount findByCustomerId(){
-//        BankAccount result = null;
-//
-//        try(Session session = getSession()) {
-//            String findByCustomerId = "FROM BankAccount p WHERE p.customerId = :customerId";
-//            Query<BankAccount> query = session.createQuery(findByCustomerId);
-//            query.setParameter("customerId", customerId);
-//
-//            List<BankAccount> foundBankAccount = query.getResultList();
-//
-//            if(foundBankAccount.isEmpty()) {
-//                return result;
-//            }else {
-//                result = foundBankAccount.get(1);
-//            }
-//        }catch (HibernateException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return result;
-//    }
+     public List<BankAccount> findAll(){
+        List<BankAccount> bankAccountList = null;
 
-    //update //change account type of a customer??
-    //input cerintele exercitiului??
-    //public void update(int id,) {
-//        BankAccount result = null;
-//        Transaction transaction = null;
-//        try (Session session = getSession()) {
-//            BankAccount bankAccountToBeUpdated = session.find();
-//
-//            transaction = session.beginTransaction();
-//
-//            bankAcountToBeUpdated.setAccountBalance(bankAccount.getAccountBalance());
-//            bankAccountToBeUpdated.setCurrency(bankAccount.getCurrency());
-//
-//            session.update(bankAccountToBeUpdated);
-//
-//            transaction.commit();
-//            result = session.find();
-//        } catch (HibernateException e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            System.out.println(e.getMessage());
-//        }
-//        return result;
-//    }
+        try(Session session = getSession()) {
+            String hql = "FROM BankAccount";
+            Query<BankAccount> query = session.createQuery(hql);
 
-        // delete
-//    public void delete(Long id) {
-//        Transaction transaction = null;
-//        try (Session session = getSession()) {
-//            BankAccount bankAccountToBeDeleted = session.find();
-//
-//            transaction = session.beginTransaction();
-//
-//            session.delete(bankAccountToBeDeleted);
-//
-//            transaction.commit();
-//        } catch (HibernateException e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            System.out.println(e.getMessage());
-//        }
-//    }
-//
-//    private Session getSession() {
-//        return HibernateUtil.getSessionFactory().openSession();
-        // }
-//}
+            bankAccountList =  query.getResultList();
+
+        }catch (HibernateException e) {
+            System.out.println(e.getMessage());
+        }
+        return bankAccountList;
+    }
+
+
+    //update
+    public BankAccount update(int id, BankAccount BankAccountDetails) {
+        BankAccount result = null;
+        Transaction transaction = null;
+        try (Session session = getSession()) {
+            BankAccount bankAccountToBeUpdated = session.find(BankAccount.class, id);
+
+            transaction = session.beginTransaction();
+
+            bankAccountToBeUpdated.setAccountNumber(BankAccountDetails.getAccountNumber());
+            bankAccountToBeUpdated.setIBAN(BankAccountDetails.getIBAN());
+            bankAccountToBeUpdated.setAccountTypeId(BankAccountDetails.getAccountTypeId());
+            bankAccountToBeUpdated.setCurrency(BankAccountDetails.getCurrency());
+            bankAccountToBeUpdated.setAccountBalance(BankAccountDetails.getAccountBalance());
+            bankAccountToBeUpdated.setFriendlyName(BankAccountDetails.getFriendlyName());
+            bankAccountToBeUpdated.setCustomerId(BankAccountDetails.getCustomerId());
+
+            session.update(bankAccountToBeUpdated);
+
+            transaction.commit();
+            result = session.find(BankAccount.class, id);
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+    public void delete(int id) {
+        Transaction transaction = null;
+        try (Session session = getSession()) {
+            BankAccount bankAccountToBeDeleted = session.find(BankAccount.class, id);
+
+            transaction = session.beginTransaction();
+
+            session.delete(bankAccountToBeDeleted);
+
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(e.getMessage());
+        }
+    }
+    private Session getSession() {
+        return HibernateUtil.getSessionFactory().openSession();
+    }
+
 }

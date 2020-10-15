@@ -37,7 +37,7 @@ public class EntityDaoTests {
         AccountType accountType2 = new AccountType();
         accountType2.setAccountType("debit");
         AccountTypeDao accountTypeDao = new AccountTypeDao();
-        //vreificare create dao
+        //verificare create dao
         accountTypeDao.create(accountType2);
         AccountType accountTypeCredit= new AccountType();
         //verificare update dao

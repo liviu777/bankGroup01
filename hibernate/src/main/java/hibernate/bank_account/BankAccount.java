@@ -21,17 +21,21 @@ public class BankAccount {
     @Column(name = "IBAN")
     private String IBAN;
 
+    @Column(name = "AccountTypeId")
+    private String accountTypeId;
+
     @Column(name = "Currency")
     private String currency;
 
     @Column(name = "AccountBalance")
     private int accountBalance;
 
+    @Column(name = "FriendlyName")
+    private String friendlyName;
+
     @Column(name = "CustomerId")
     private int customerId;
 
-    @Column(name = "FriendlyName")
-    private String friendlyName;
 
     public BankAccount() {
     }
@@ -60,6 +64,14 @@ public class BankAccount {
         this.IBAN = IBAN;
     }
 
+    public String getAccountTypeId() {
+        return accountTypeId;
+    }
+
+    public void setAccountTypeId(String accountTypeId) {
+        this.accountTypeId = accountTypeId;
+    }
+
     public String getCurrency() {
         return currency;
     }
@@ -76,13 +88,6 @@ public class BankAccount {
         this.accountBalance = accountBalance;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
 
     public String getFriendlyName() {
         return friendlyName;
@@ -92,17 +97,25 @@ public class BankAccount {
         this.friendlyName = friendlyName;
     }
 
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
     @Override
     public String toString() {
         return "BankAccount{" +
                 "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", IBAN='" + IBAN + '\'' +
+                ", accountTypeId='" + accountTypeId + '\'' +
                 ", currency='" + currency + '\'' +
-                ", accountBalance=" + accountBalance +
-                ", customerId=" + customerId +
+                ", accountBalance='" + accountBalance + '\'' +
                 ", friendlyName='" + friendlyName + '\'' +
+                ", customerId='" + customerId + '\'' +
                 '}';
     }
-
 }

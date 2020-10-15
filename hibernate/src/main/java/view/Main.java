@@ -7,7 +7,6 @@ public class Main {
         //am mutat in fisierul asta toate testele pentru DAO entitati ca sa fie mainl mai curat
         MainMenu mainMenu = new MainMenu();
         mainMenu.welcomeMenu();
-        EntityDaoTests.test();
-
+        //EntityDaoTests.test();
     }
 }
