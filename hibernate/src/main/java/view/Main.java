@@ -9,8 +9,8 @@ public class Main {
         //mainMenu.welcomeMenu();
 //        EntityDaoTests.test();
         Liviu liviu = new Liviu();
-        liviu.transferMoney();
-        liviu.createDebitAccount();
+//        liviu.transferMoney();
+//        liviu.createDebitAccount();
 
     }
 }

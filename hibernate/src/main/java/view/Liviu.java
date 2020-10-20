@@ -69,6 +69,24 @@ public class Liviu {
         String friendlyName = input.nextLine();
         newDebitAccount.setFriendlyName(friendlyName);
 
+        Scanner input2 = new Scanner(System.in);
+        System.out.println("Please set the account Balance:");
+        double accountBalance = input.nextDouble();
+        newDebitAccount.setAccountBalance(accountBalance);
+
+        Scanner input3 = new Scanner(System.in);
+        System.out.println("Please enter friendly name:");
+        String IBAN = input.nextLine();
+        newDebitAccount.setIBAN(IBAN);
+
+        Scanner input4 = new Scanner(System.in);
+        System.out.println("Please enter the customer ID:");
+        int customerId = input.nextInt();
+        newDebitAccount.getCustomerId();
+
+
+
+
 //        newDebitAccount.setIBAN(generateIBAN());
 //        newDebitAccount.setAccountNumber(generateAccountNumber());
 
