@@ -12,10 +12,10 @@ import javax.persistence.Table;
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "")
     private int id;
 
-    @Column(name = "AccountNumber")
+    @Column(name = "AccountNumber", unique = true)
     private String accountNumber;
 
     @Column(name = "IBAN")
@@ -28,7 +28,7 @@ public class BankAccount {
     private String currency;
 
     @Column(name = "AccountBalance")
-    private int accountBalance;
+    private double accountBalance;
 
     @Column(name = "FriendlyName")
     private String friendlyName;
@@ -76,11 +76,11 @@ public class BankAccount {
         this.currency = currency;
     }
 
-    public int getAccountBalance() {
+    public double getAccountBalance() {
         return accountBalance;
     }
 
-    public void setAccountBalance(int accountBalance) {
+    public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
 

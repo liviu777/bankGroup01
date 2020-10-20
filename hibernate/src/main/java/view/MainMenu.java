@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+//metoda 2 si 4 Liviu
+
 public class MainMenu {
 
     public void welcomeMenu(){

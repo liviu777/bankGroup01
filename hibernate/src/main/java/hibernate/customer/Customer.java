@@ -19,6 +19,8 @@ public class Customer {
     private String username;
     private String password;
 
+
+
     public Customer() {
     }
 
@@ -89,6 +91,8 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 
     @Override
     public String toString() {

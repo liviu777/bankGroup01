@@ -21,6 +21,7 @@ public class HibernateUtil {
         return configuration.buildSessionFactory(serviceRegistry);
     }
 
+
     private static Configuration createConfig(){
         Configuration configuration = new Configuration();
         Properties settings = new Properties();
@@ -28,11 +29,11 @@ public class HibernateUtil {
         settings.put(Environment.URL, "jdbc:mysql://localhost:3306/bankservice?serverTimezone" +
                 "=UTC");
         settings.put(Environment.USER, "root");
-        settings.put(Environment.PASS, "23:23soldI");
+        settings.put(Environment.PASS, "Univers2016");
         settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
         //settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-        //settings.put(Environment.HBM2DDL_AUTO, "create");
+        settings.put(Environment.HBM2DDL_AUTO, "update");
 
         configuration.setProperties(settings);
         configuration.addAnnotatedClass(AccountType.class);

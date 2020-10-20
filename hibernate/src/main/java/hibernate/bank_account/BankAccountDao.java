@@ -3,12 +3,13 @@ package hibernate.bank_account;
 import hibernate.HibernateUtil;
 import hibernate.account_type.AccountType;
 import hibernate.customer.Customer;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class BankAccountDao {
@@ -43,19 +44,29 @@ public class BankAccountDao {
 
     //read
     //find by CustomerId
-     public List<BankAccount> findAll(){
+    public List<BankAccount> findAll() {
         List<BankAccount> bankAccountList = null;
 
-        try(Session session = getSession()) {
+        try (Session session = getSession()) {
             String hql = "FROM BankAccount";
             Query<BankAccount> query = session.createQuery(hql);
 
-            bankAccountList =  query.getResultList();
+            bankAccountList = query.getResultList();
 
-        }catch (HibernateException e) {
+        } catch (HibernateException e) {
             System.out.println(e.getMessage());
         }
         return bankAccountList;
+    }
+
+    public BankAccount findByAccountNumber(String accountNumber) {
+
+        CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+        CriteriaQuery<BankAccount> criteria = criteriaBuilder.createQuery(BankAccount.class);
+
+        Root<BankAccount> bankAccount = criteria.from(BankAccount.class);
+
+        return (BankAccount) criteria.where(criteriaBuilder.equal(bankAccount.get("accountNumber"), accountNumber));
     }
 
 
@@ -106,6 +117,7 @@ public class BankAccountDao {
             System.out.println(e.getMessage());
         }
     }
+
     private Session getSession() {
         return HibernateUtil.getSessionFactory().openSession();
     }
