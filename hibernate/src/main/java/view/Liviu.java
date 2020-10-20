@@ -57,7 +57,8 @@ public class Liviu {
         BankAccount newDebitAccount = new BankAccount();
 
         System.out.println("Enter details for the debit account:");
-        newDebitAccount.setAccountTypeId("debit");
+
+        newDebitAccount.setAccountTypeId(1);
 
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter currency:");

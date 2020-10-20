@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "BankAccount")
+
 @Table(name = "BankAccount")
 public class BankAccount {
     @Id
@@ -22,7 +23,7 @@ public class BankAccount {
     private String IBAN;
 
     @Column(name = "AccountTypeId")
-    private String accountTypeId;
+    private int accountTypeId;
 
     @Column(name = "Currency")
     private String currency;
@@ -60,11 +61,11 @@ public class BankAccount {
         this.IBAN = IBAN;
     }
 
-    public String getAccountTypeId() {
+    public int getAccountTypeId() {
         return accountTypeId;
     }
 
-    public void setAccountTypeId(String accountTypeId) {
+    public void setAccountTypeId(int accountTypeId) {
         this.accountTypeId = accountTypeId;
     }
 
