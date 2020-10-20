@@ -89,14 +89,24 @@ public class MainMenu {
 
 
         switch (option) {
-            case 1:
-                ///viewPortofolio(customer);
-                //ana.viewPortofolio;
-                //ana.viewBalance;
+            case 1: // view portofolio // view balance;
+                //bankAccount.viewPortofolio();
+                //bankAccount.viewBalance();
                 break;
-            case 2:
-                //transferMoney(customer);
+            case 2: //transfer money(customer);
+
+
                 break;
+            case 3: //deposit cash at ATM;
+//                try {
+//                    bankAccount.makeDeposit();
+//                } catch (DepositException e){}
+                break;
+            case 4: // create debit account;
+
+                break;
+            case 5: //create credit account;
+                //accountType.createCreditAccount();
         }
     }
 }
