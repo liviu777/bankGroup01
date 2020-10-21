@@ -133,33 +133,24 @@ public class MainMenu {
             case 1: // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
                 //bankAccount.viewBalance();
-                adian.viewPortofolio(customer);
-                welcomeMenuLoggedIn(customerDao,customer);
+
                 break;
             case 2: //transfer money(customer);
-                adian.transferMoney(customerDao,customer);
-                welcomeMenuLoggedIn(customerDao,customer);
+
                 break;
             case 3: //deposit cash at ATM;
 //                try {
 //                    bankAccount.makeDeposit();
 //                } catch (DepositException e){}
-                adian.depositATM(customerDao,customer);
-                welcomeMenuLoggedIn(customerDao,customer);
+
 
                 break;
             case 4: // create debit account;
 
-                adian.createAccount(customerDao,customer,"debit");
-                adian.viewPortofolio(customer);
-                welcomeMenuLoggedIn(customerDao,customer);
-
                 break;
             case 5: //create credit account;
                 //accountType.createCreditAccount();
-                adian.createAccount(customerDao,customer,"credit");
-                adian.viewPortofolio(customer);
-                welcomeMenuLoggedIn(customerDao,customer);
+
 
         }
     }

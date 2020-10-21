@@ -82,6 +82,7 @@ public class BankAccountDao {
 
         return (BankAccount) criteria.where(criteriaBuilder.equal(bankAccount.get("accountNumber"), accountNumber));
     }
+
     public BankAccount findBankAccountByNumber(int accountNumber) {
         BankAccount bankAccount = null;
 
