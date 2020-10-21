@@ -22,7 +22,7 @@ public class EntityDaoTests {
 
 
         BankAccount bankAccount = new BankAccount();
-        bankAccount.setAccountNumber("66-77-88");
+        bankAccount.setAccountNumber(667788);
         bankAccount.setIBAN("RO49 AAAA 1B31 0075 9384 0000");
         bankAccount.setCurrency("RON");
         bankAccount.setAccountBalance(2500);

@@ -98,5 +98,4 @@ public class CustomerDao {
     private Session getSession() {
         return HibernateUtil.getSessionFactory().openSession();
     }
-
 }

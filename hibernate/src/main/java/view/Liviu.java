@@ -1,8 +1,7 @@
 package view;
 
-
 //2 –Transfer money
-//4–Createdebit account
+//4–Create debit account
 
 import hibernate.bank_account.BankAccount;
 import hibernate.bank_account.BankAccountDao;
@@ -48,8 +47,8 @@ public class Liviu {
         double newBalanceDestinationAccount = destinationBankAccount.getAccountBalance() + amountToTransfer;
         destinationBankAccount.setAccountBalance(newBalanceDestinationAccount);
 
-        bankAccountDao.update(sourceBankAccount.getId(), sourceBankAccount);
-        bankAccountDao.update(destinationBankAccount.getId(), destinationBankAccount);
+        bankAccountDao.update(sourceBankAccount.getAccountNumber(), sourceBankAccount);
+        bankAccountDao.update(destinationBankAccount.getAccountNumber(), destinationBankAccount);
 
     }
 
@@ -84,8 +83,6 @@ public class Liviu {
         System.out.println("Please enter the customer ID:");
         int customerId = input.nextInt();
         newDebitAccount.getCustomerId();
-
-
 
 
 //        newDebitAccount.setIBAN(generateIBAN());

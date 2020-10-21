@@ -121,5 +121,4 @@ public class BankAccountDao {
     private Session getSession() {
         return HibernateUtil.getSessionFactory().openSession();
     }
-
 }

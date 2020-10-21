@@ -7,8 +7,8 @@ import hibernate.customer.CustomerDao;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-
-//metoda 2 si 4 Liviu
+//metoda 1, 3 si 5 -Ana
+//metoda 2 si 4 - Liviu
 
 public class MainMenu {
 
@@ -55,7 +55,7 @@ public class MainMenu {
             customerDao.createCustomer(newCustomer);
             System.out.println("Registration successful");
         }catch (Exception e){
-            System.out.println("ceva eraore la creare customer");
+            System.out.println("ceva eroare la creare customer");
             e.printStackTrace();
         }
 
@@ -78,8 +78,7 @@ public class MainMenu {
             welcomeMenuLoggedIn(customerDao,customerData);
         }
     }
-    // cand facem apelurile sa trimitem si customerDao ca si parametru sau sa il cream din nou in
-    // metoda in care il folosim ?
+
     public void welcomeMenuLoggedIn(CustomerDao customerDao, Customer customer) {
         System.out.println(" 1 View portofolio\n 2.Transfer money ");
         Scanner input = new Scanner(System.in);
@@ -93,18 +92,18 @@ public class MainMenu {
         switch (option) {
             case 1: // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
-                //bankAccount.viewBalance();
+
                 break;
             case 2: //transfer money(customer);
 
 
                 break;
             case 3: //deposit cash at ATM;
-//                try {
-//                    bankAccount.makeDeposit();
-//                } catch (DepositException e){}
+
+
                 break;
             case 4: // create debit account;
+                //accountType.createDebitAccount();
 
                 break;
             case 5: //create credit account;

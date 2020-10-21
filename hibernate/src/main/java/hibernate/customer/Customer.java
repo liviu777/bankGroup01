@@ -20,7 +20,6 @@ public class Customer {
     private String password;
 
 
-
     public Customer() {
     }
 

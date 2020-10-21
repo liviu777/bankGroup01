@@ -13,11 +13,9 @@ import javax.persistence.Table;
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "")
-    private int id;
 
     @Column(name = "AccountNumber", unique = true)
-    private String accountNumber;
+    private int accountNumber;
 
     @Column(name = "IBAN")
     private String IBAN;
@@ -37,19 +35,12 @@ public class BankAccount {
     @Column(name = "CustomerId")
     private int customerId;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -105,7 +96,6 @@ public class BankAccount {
     @Override
     public String toString() {
         return "BankAccount{" +
-                "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", IBAN='" + IBAN + '\'' +
                 ", accountTypeId='" + accountTypeId + '\'' +
