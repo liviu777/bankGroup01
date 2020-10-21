@@ -43,7 +43,6 @@ public class BankAccountDao {
     }
 
     //read
-    //find by CustomerId
     public List<BankAccount> findAll() {
         List<BankAccount> bankAccountList = null;
 

@@ -35,6 +35,9 @@ public class BankAccount {
     @Column(name = "CustomerId")
     private int customerId;
 
+    public BankAccount() {
+    }
+
 
     public int getAccountNumber() {
         return accountNumber;
