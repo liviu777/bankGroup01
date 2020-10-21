@@ -1,10 +1,11 @@
 package hibernate.bank_account;
 
-import hibernate.customer.Customer;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity(name = "BankAccount")
 
@@ -12,11 +13,9 @@ import java.util.List;
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "")
-    private int id;
 
     @Column(name = "AccountNumber", unique = true)
-    private String accountNumber;
+    private int accountNumber;
 
     @Column(name = "IBAN")
     private String IBAN;
@@ -36,23 +35,12 @@ public class BankAccount {
     @Column(name = "CustomerId")
     private int customerId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CustomerId")
-    private Customer customer;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -105,18 +93,9 @@ public class BankAccount {
         this.customerId = customerId;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     @Override
     public String toString() {
         return "BankAccount{" +
-                "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", IBAN='" + IBAN + '\'' +
                 ", accountTypeId='" + accountTypeId + '\'' +

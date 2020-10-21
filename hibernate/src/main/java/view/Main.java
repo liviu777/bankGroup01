@@ -13,8 +13,8 @@ public class Main {
         liviu.createDebitAccount();
 
         Ana ana = new Ana();
-//        ana.viewPortofolio();
-//        ana.depositATM();
+        ana.viewPortofolio();
+        //ana.depositATM();
         ana.createCreditAccount();
 
         //EntityDaoTests.test();
