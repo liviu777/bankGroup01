@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccountDao {
@@ -43,6 +44,20 @@ public class BankAccountDao {
     }
 
     //read
+    public List<BankAccount> findBankAccountsOfCustomer(Customer customerData){
+        List<BankAccount> bankAccountList = new ArrayList<>();
+
+        try (Session session = getSession()) {
+            String hql = "FROM BankAccount b where b.customer = : customerData";
+            Query<BankAccount> query = session.createQuery(hql);
+            query.setParameter("customerData", customerData);
+            bankAccountList = query.list();
+
+        } catch (HibernateException e) {
+            System.out.println(e.getMessage());
+        }
+        return bankAccountList;
+    }
     public List<BankAccount> findAll() {
         List<BankAccount> bankAccountList = null;
 

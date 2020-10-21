@@ -21,12 +21,14 @@ public class MainMenu {
         try {
             option = input.nextInt();
         }catch (Exception e){
-            System.out.println("Selected option doesn't exist");
+            //System.out.println("Selected option doesn't exist");
+            System.out.println(e.getMessage());
         }
         switch (option) {
             case 0:
-                System.out.println("");
+                System.out.println("Option chosen doesn't exist");
                 welcomeMenu();
+                break;
             case 1:
                 registration();
                 welcomeMenu();
@@ -34,6 +36,10 @@ public class MainMenu {
             case 2:
                 login();
                 break;
+
+
+
+
         }
     }
 
@@ -127,6 +133,8 @@ public class MainMenu {
             case 1: // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
                 //bankAccount.viewBalance();
+                adian.viewPortofolio(customer);
+                welcomeMenuLoggedIn(customerDao,customer);
                 break;
             case 2: //transfer money(customer);
 
@@ -136,12 +144,23 @@ public class MainMenu {
 //                try {
 //                    bankAccount.makeDeposit();
 //                } catch (DepositException e){}
+                adian.depositATM(customerDao,customer);
+                welcomeMenuLoggedIn(customerDao,customer);
+
                 break;
             case 4: // create debit account;
+
+                adian.createAccount(customerDao,customer,"debit");
+                adian.viewPortofolio(customer);
+                welcomeMenuLoggedIn(customerDao,customer);
 
                 break;
             case 5: //create credit account;
                 //accountType.createCreditAccount();
+                adian.createAccount(customerDao,customer,"credit");
+                adian.viewPortofolio(customer);
+                welcomeMenuLoggedIn(customerDao,customer);
+
         }
     }
 }

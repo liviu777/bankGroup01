@@ -7,10 +7,29 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountTypeDao {
+    public AccountType getAccountType(String accountType){
+        List<AccountType> accountTypeList = null;
 
+        String hql = "FROM AccountType acc where acc.accountType = : accountType";
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            // named query with parameters using HQL
+            Query<AccountType> query = session.createQuery(hql);
+            query.setParameter("accountType", accountType);
+            accountTypeList = query.list();
+            //System.out.println(accountTypeList.toString());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        return accountTypeList.get(0);
+
+    }
     public void create(AccountType accountType) {
         Session session = null;
         Transaction transaction = null;
@@ -26,7 +45,7 @@ public class AccountTypeDao {
             session.save(accountType);
 
             transaction.commit();
-            System.out.println("Account type added");
+            //System.out.println("Account type added");
 
             // find by username and return
         } catch (HibernateException e) {
@@ -70,7 +89,7 @@ public class AccountTypeDao {
 
             transaction = session.beginTransaction();
 
-            accountTypeToBeUpdated.setAccountType(accountTypeDetails.getAccountType());
+            accountTypeToBeUpdated.setAccountType(accountTypeDetails.getAccountTypeAsString());
 
             session.update(accountTypeToBeUpdated);
 

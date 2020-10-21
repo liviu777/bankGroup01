@@ -1,5 +1,6 @@
 package hibernate.customer;
 import hibernate.bank_account.BankAccount;
+import hibernate.bank_account.BankAccountDao;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,11 +37,9 @@ public class Customer {
             orphanRemoval = true)
     private List<BankAccount> bankAccounts = new ArrayList<>();
 
-
-
-
     public List<BankAccount> getBankAccounts() {
-        return bankAccounts;
+        BankAccountDao bankAccountDao = new BankAccountDao();
+        return bankAccountDao.findBankAccountsOfCustomer(this);
     }
     public void setBankAccounts(List<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
@@ -53,9 +52,9 @@ public class Customer {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    /*public void setCustomerId(Long customerId) {
         this.customerId = customerId;
-    }
+    }*/
 
     public String getFirstName() {
         return firstName;
@@ -106,7 +105,9 @@ public class Customer {
     }
 
     public void addBankAccount(BankAccount bankAccount){
-        bankAccounts.add(bankAccount);
+        List<BankAccount> bankAccountList = getBankAccounts();
+        bankAccountList.add(bankAccount);
+        setBankAccounts(bankAccountList);
         bankAccount.setCustomer(this);
     }
     public void removeBankAccount(BankAccount bankAccount){

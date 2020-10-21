@@ -14,7 +14,7 @@ public class BankAccount {
     @Column(name = "")
     private int id;
 
-    @Column(name = "AccountNumber", unique = true)
+    @Column(name = "AccountNumber")
     private int accountNumber;
 
     @Column(name = "IBAN")
@@ -37,11 +37,11 @@ public class BankAccount {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CustomerId")
+    @JoinColumn(name = "Customer_Id")
     private Customer customer;
 
     @OneToOne
-    @JoinColumn(name = "AccountTypeId")
+    @JoinColumn(name = "Account_Type_Id")
     private AccountType accountType;
 
 
@@ -92,47 +92,48 @@ public class BankAccount {
     public double getAccountBalance() {
         return accountBalance;
     }
-
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
-
-
     public String getFriendlyName() {
         return friendlyName;
     }
-
     public void setFriendlyName(String friendlyName) {
         this.friendlyName = friendlyName;
     }
-
     public int getCustomerId() {
         return customerId;
     }
-
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-
     public Customer getCustomer() {
         return customer;
     }
-
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     }
 
     @Override
     public String toString() {
         return "BankAccount{" +
                 "id=" + id +
-                ", accountNumber='" + accountNumber + '\'' +
+                ", accountNumber=" + accountNumber +
                 ", IBAN='" + IBAN + '\'' +
-                ", accountTypeId='" + accountTypeId + '\'' +
+                ", accountTypeId=" + accountTypeId +
                 ", currency='" + currency + '\'' +
-                ", accountBalance='" + accountBalance + '\'' +
+                ", accountBalance=" + accountBalance +
                 ", friendlyName='" + friendlyName + '\'' +
-                ", customerId='" + customerId + '\'' +
+                ", customerId=" + customerId +
+                ", accountType=" + accountType.getAccountTypeAsString() +
                 '}';
     }
 }

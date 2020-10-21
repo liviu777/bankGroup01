@@ -9,6 +9,16 @@ import hibernate.customer.CustomerDao;
 
 public class EntityDaoTests {
     public static void test(){
+
+      /*  AccountTypeDao accountTypeDao = new AccountTypeDao();
+        AccountType creditAccount = new AccountType();
+        creditAccount.setAccountType("credit");
+        AccountType debitAccount = new AccountType();
+        debitAccount.setAccountType("debit");
+        accountTypeDao.create(creditAccount);
+        accountTypeDao.create(debitAccount);
+*/
+
         Customer customer = new Customer();
         customer.setFirstName("Daniel");
         customer.setCNP("1900209274477");

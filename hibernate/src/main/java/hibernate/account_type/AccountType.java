@@ -33,7 +33,7 @@ public class AccountType {
         this.accountTypeId = accountTypeId;
     }
 
-    public String getAccountType() {
+    public String getAccountTypeAsString() {
         return accountType;
     }
 
