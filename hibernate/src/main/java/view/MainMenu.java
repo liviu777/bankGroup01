@@ -7,12 +7,13 @@ import hibernate.customer.CustomerDao;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-//metoda 1, 3 si 5 -Ana
-//metoda 2 si 4 - Liviu
+
+//metoda 2 si 4 Liviu
 
 public class MainMenu {
 
     public void welcomeMenu(){
+        System.out.println("Write selected option:");
         System.out.println("1. Register");
         System.out.println("2. Login");
         Scanner input = new Scanner(System.in);
@@ -31,31 +32,57 @@ public class MainMenu {
     }
 
     public void registration(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Dati primul nume de inregistrare");
-        String firstName = input.nextLine();
-        System.out.println("Dati nume al doilea nume de inregistrare");
-        String secondName = input.nextLine();
-        // la username unic verificam daca username-ul exista deja sau incercam direct sa cream
-        // userul si daca ne da eroare(il punem in baza de date field unic) anuntam userul ?
-        //metoda de verifcare unicitate username ?
-        System.out.println("Dati usernameul ");
-        String username = input.nextLine();
-
-        System.out.println("Dati password");
-        String password = input.nextLine();
         CustomerDao customerDao = new CustomerDao();
+        Scanner input = new Scanner(System.in);
+        RegistrationDataValidation registrationDataValidation = new RegistrationDataValidation();
+        System.out.println("Enter first name: ");
+        String firstName = input.nextLine();
+        while (!registrationDataValidation.firstNameValidation(firstName)){
+            System.out.println("First name not valid, enter first name again: ");
+            firstName = input.nextLine();
+        }
+
+        System.out.println("Enter second name: ");
+        String secondName = input.nextLine();
+        while (!registrationDataValidation.secondNameValidation(secondName)){
+            System.out.println("Second name not valid, enter second name again: ");
+            secondName = input.nextLine();
+        }
+
+        System.out.println("Enter CNP: ");
+        String CNP = input.nextLine();
+        while (!registrationDataValidation.CNPValidation(CNP)){
+            System.out.println("CNP not valid, enter CNP again: ");
+            CNP = input.nextLine();
+        }
+
+        System.out.println("Enter email: ");
+        String email = input.nextLine();
+
+        System.out.println("Enter username: ");
+        String username = input.nextLine();
+        while (customerDao.findByUsername(username) != null){
+            System.out.println("Username exists, choose another username :");
+            username = input.nextLine();
+        }
+
+        System.out.println("Enter password: ");
+        String password = input.nextLine();
+
         Customer newCustomer = new Customer();
         newCustomer.setFirstName(firstName);
         newCustomer.setLastName(secondName);
+        newCustomer.setCNP(CNP);
+        newCustomer.setEmail(email);
         newCustomer.setUsername(username);
         newCustomer.setPassword(password);
+
+
 
         try {
             customerDao.createCustomer(newCustomer);
             System.out.println("Registration successful");
         }catch (Exception e){
-            System.out.println("ceva eroare la creare customer");
             e.printStackTrace();
         }
 
@@ -63,24 +90,24 @@ public class MainMenu {
     public void login(){
         CustomerDao customerDao = new CustomerDao();
 
-        System.out.println("Introduceti username");
+        System.out.println("Introduce username: ");
         Scanner input = new Scanner(System.in);
         String username = input.nextLine();
-        System.out.println("Introduceti parola");
+        System.out.println("Introduce password: ");
         String password  = input.nextLine();
 
         Customer customerData = customerDao.findByUsername(username);
-        System.out.println("Sa vad ce gaseste :" +customerData);
         if(customerData == null || !password.equals(customerData.getPassword())){
-            System.out.println("Date introduse gresit, incercati din nou");
+            System.out.println("Wrong data, try again :");
             login();
         }else {
             welcomeMenuLoggedIn(customerDao,customerData);
         }
     }
-
     public void welcomeMenuLoggedIn(CustomerDao customerDao, Customer customer) {
-        System.out.println(" 1 View portofolio\n 2.Transfer money ");
+        System.out.println("Choose option: ");
+        System.out.println(" 1.View portofolio\n 2.Transfer money \n 3.Deposit Cash\n 4.Create " +
+                "debit account \n 5.Create credit account");
         Scanner input = new Scanner(System.in);
         int option = input.nextInt();
 
@@ -92,18 +119,18 @@ public class MainMenu {
         switch (option) {
             case 1: // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
-
+                //bankAccount.viewBalance();
                 break;
             case 2: //transfer money(customer);
 
 
                 break;
             case 3: //deposit cash at ATM;
-
-
+//                try {
+//                    bankAccount.makeDeposit();
+//                } catch (DepositException e){}
                 break;
             case 4: // create debit account;
-                //accountType.createDebitAccount();
 
                 break;
             case 5: //create credit account;
