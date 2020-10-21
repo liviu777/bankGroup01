@@ -13,21 +13,27 @@ import java.util.Scanner;
 public class MainMenu {
 
     public void welcomeMenu(){
-        System.out.println("Write selected option:");
+        System.out.println("Select  option:");
         System.out.println("1. Register");
         System.out.println("2. Login");
         Scanner input = new Scanner(System.in);
-        int option = input.nextInt();
+        int option = 0;
+        try {
+            option = input.nextInt();
+        }catch (Exception e){
+            System.out.println("Selected option doesn't exist");
+        }
         switch (option) {
+            case 0:
+                System.out.println("");
+                welcomeMenu();
             case 1:
                 registration();
+                welcomeMenu();
                 break;
             case 2:
                 login();
                 break;
-        }
-        if (option == 1) {
-            welcomeMenu();
         }
     }
 
@@ -93,6 +99,7 @@ public class MainMenu {
         System.out.println("Introduce username: ");
         Scanner input = new Scanner(System.in);
         String username = input.nextLine();
+
         System.out.println("Introduce password: ");
         String password  = input.nextLine();
 

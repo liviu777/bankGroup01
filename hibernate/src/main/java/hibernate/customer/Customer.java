@@ -11,22 +11,34 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
     private Long customerId;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastName;
+    @Column(name = "CNP")
     private String CNP;
+    @Column(name = "email")
     private String email;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
+
+
+
+
+
+    @OneToMany(
+            mappedBy = "Customer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<BankAccount> bankAccounts = new ArrayList<>();
 
 
     public Customer() {
     }
-
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<BankAccount> bankAccounts = new ArrayList<>();
 
     public List<BankAccount> getBankAccounts() {
         return bankAccounts;
@@ -91,7 +103,14 @@ public class Customer {
         this.password = password;
     }
 
-
+    public void addBankAccount(BankAccount bankAccount){
+        bankAccounts.add(bankAccount);
+        bankAccount.setCustomer(this);
+    }
+    public void removeBankAccount(BankAccount bankAccount){
+        bankAccounts.remove(bankAccount);
+        bankAccount.setCustomer(null);
+    }
 
     @Override
     public String toString() {
@@ -102,8 +121,8 @@ public class Customer {
                 ", CNP='" + CNP + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", bankAccounts=" + bankAccounts +
-                '}';
+                ", password='" + password + '\''
+                //+ getBankAccounts().toString()
+                ;
     }
 }
