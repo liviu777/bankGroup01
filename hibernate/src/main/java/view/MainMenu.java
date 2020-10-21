@@ -130,7 +130,7 @@ public class MainMenu {
 
 
         switch (option) {
-            case 1: ana.viewPortofolio();
+            case 1: adian.viewPortofolio(customer);
 
                 // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
@@ -140,7 +140,7 @@ public class MainMenu {
             case 2: liviu.transferMoney();
 
                 break;
-            case 3: ana.depositATM(1000);
+            case 3: adian.depositATM(customerDao,customer);
 
                 //deposit cash at ATM;
 //                try {
