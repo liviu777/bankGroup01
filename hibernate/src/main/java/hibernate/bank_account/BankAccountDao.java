@@ -82,6 +82,25 @@ public class BankAccountDao {
 
         return (BankAccount) criteria.where(criteriaBuilder.equal(bankAccount.get("accountNumber"), accountNumber));
     }
+    public BankAccount findBankAccountByNumber(int accountNumber) {
+        BankAccount bankAccount = null;
+
+        String hql = "FROM BankAccount bb where bb.accountNumber = : accountNumber";
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            // named query with parameters using HQL
+            Query<BankAccount> query = session.createQuery(hql);
+            query.setParameter("accountNumber", accountNumber);
+            bankAccount = query.list().get(0);
+            //System.out.println(accountTypeList.toString());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        return bankAccount;
+
+    }
 
 
     //update

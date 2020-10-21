@@ -15,9 +15,7 @@ public class Adian {
 
         customerData.getBankAccounts().forEach(bankAccount -> System.out.println(
                 bankAccount.getFriendlyName()+ " " +bankAccount.getAccountType().getAccountTypeAsString() +
-                        " "+bankAccount.getCurrency()+" "+
-                        bankAccount.getAccountBalance()+" "+bankAccount.getIBAN()
-        ));
+                        " "+bankAccount.getCurrency()+" "+ bankAccount.getAccountBalance()));
     }
     public BankAccount bankAccountSelection ( CustomerDao customerDao,Customer customer){
 
@@ -92,18 +90,18 @@ public class Adian {
         double amountToTransfer = input.nextDouble();
 
         System.out.println("Please enter recipient's account number: ");
-        String destinationAccountNumber = input.nextLine();
+        int destinationAccountNumber = input.nextInt();
 
-        BankAccount destinationBankAccount = bankAccountDao.findByAccountNumber(destinationAccountNumber);
+        BankAccount destinationBankAccount = bankAccountDao.findBankAccountByNumber(destinationAccountNumber);
 
         if (destinationBankAccount == null) {
             System.out.println("Source bank account does not exist.");
             return;
-        }
-
-        if (bankAccountForTransfer.getAccountBalance() < amountToTransfer) {
+        }else if (!destinationBankAccount.getCurrency().equals(bankAccountForTransfer.getCurrency())){
+            System.out.println("Currency of the account you wish to transfer is different");
+        }else if (bankAccountForTransfer.getAccountBalance() < amountToTransfer) {
             System.out.println("Insufficient funds.");
-            return;
+            transferMoney(customerDao,customerData);
         }
 
         double newBalanceSourceAccount = bankAccountForTransfer.getAccountBalance() - amountToTransfer;
@@ -114,8 +112,7 @@ public class Adian {
         destinationBankAccount.setAccountBalance(newBalanceDestinationAccount);
         bankAccountDao.update(destinationBankAccount.getId(),destinationBankAccount);
 
-        // bankAccountDao.update(sourceBankAccount.getAccountNumber(), sourceBankAccount);
-        // bankAccountDao.update(destinationBankAccount.getAccountNumber(), destinationBankAccount);
+        viewPortofolio(customerData);
 
     }
 }
