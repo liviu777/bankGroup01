@@ -1,5 +1,7 @@
 package hibernate.account_type;
 
+import hibernate.bank_account.BankAccount;
+
 import javax.persistence.*;
 
 @Entity(name = "AccountType")
@@ -15,6 +17,10 @@ public class AccountType {
     @Column(name = "AccountType")
     private String accountType;
 
+/*    @OneToOne(mappedBy = "accountType",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private BankAccount bankAccount;*/
 
     public AccountType() {
     }

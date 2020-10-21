@@ -31,20 +31,22 @@ public class Customer {
 
 
     @OneToMany(
-            mappedBy = "Customer",
+            mappedBy = "customer",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<BankAccount> bankAccounts = new ArrayList<>();
 
 
-    public Customer() {
-    }
+
 
     public List<BankAccount> getBankAccounts() {
         return bankAccounts;
     }
     public void setBankAccounts(List<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
+    }
+
+    public Customer() {
     }
 
     public Long getCustomerId() {
