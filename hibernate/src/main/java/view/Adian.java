@@ -28,7 +28,7 @@ public class Adian {
         Scanner input = new Scanner(System.in);
         int option  = input.nextInt();
         List<BankAccount> bankAccounts = customer.getBankAccounts();
-        if (option > bankAccounts.size()|| (option<1) ){
+        if (option-1 > bankAccounts.size() || (option-1 < 0) ){
             System.out.println("Selected bank account doesn't exist");
             bankAccountSelection(customerDao,customer);
         }
@@ -72,14 +72,50 @@ public class Adian {
         int accountNumber  = input.nextInt();
         newCreditAccount.setAccountNumber(accountNumber);
 
-        System.out.println("Please set the account IBAN:");
+       /* System.out.println("Please set the account IBAN:");
         String accountIBAN = input.nextLine();
-        newCreditAccount.setIBAN(accountIBAN);
+        newCreditAccount.setIBAN(accountIBAN);*/
         //newCreditAccount.setCustomer(customer);
 
         customer.addBankAccount(newCreditAccount);
         customerDao.update(customer.getCustomerId(),customer);
         bankAccountDao.create(newCreditAccount);
+
+    }
+    public void transferMoney(CustomerDao customerDao,Customer customerData) {
+        BankAccountDao bankAccountDao = new BankAccountDao();
+        System.out.println("Select bank account from which to transfer money : ");
+        BankAccount bankAccountForTransfer = bankAccountSelection(customerDao,customerData);
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter transfer amount: ");
+        double amountToTransfer = input.nextDouble();
+
+        System.out.println("Please enter recipient's account number: ");
+        String destinationAccountNumber = input.nextLine();
+
+        BankAccount destinationBankAccount = bankAccountDao.findByAccountNumber(destinationAccountNumber);
+
+        if (destinationBankAccount == null) {
+            System.out.println("Source bank account does not exist.");
+            return;
+        }
+
+        if (bankAccountForTransfer.getAccountBalance() < amountToTransfer) {
+            System.out.println("Insufficient funds.");
+            return;
+        }
+
+        double newBalanceSourceAccount = bankAccountForTransfer.getAccountBalance() - amountToTransfer;
+        bankAccountForTransfer.setAccountBalance(newBalanceSourceAccount);
+        bankAccountDao.update(bankAccountForTransfer.getId(),bankAccountForTransfer);
+
+        double newBalanceDestinationAccount = destinationBankAccount.getAccountBalance() + amountToTransfer;
+        destinationBankAccount.setAccountBalance(newBalanceDestinationAccount);
+        bankAccountDao.update(destinationBankAccount.getId(),destinationBankAccount);
+
+        // bankAccountDao.update(sourceBankAccount.getAccountNumber(), sourceBankAccount);
+        // bankAccountDao.update(destinationBankAccount.getAccountNumber(), destinationBankAccount);
 
     }
 }

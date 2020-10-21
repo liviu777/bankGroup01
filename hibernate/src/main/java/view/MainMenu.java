@@ -137,8 +137,8 @@ public class MainMenu {
                 welcomeMenuLoggedIn(customerDao,customer);
                 break;
             case 2: //transfer money(customer);
-
-
+                adian.transferMoney(customerDao,customer);
+                welcomeMenuLoggedIn(customerDao,customer);
                 break;
             case 3: //deposit cash at ATM;
 //                try {
