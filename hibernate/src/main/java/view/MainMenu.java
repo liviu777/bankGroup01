@@ -130,25 +130,31 @@ public class MainMenu {
 
 
         switch (option) {
-            case 1: // view portofolio // view balance;
+            case 1: ana.viewPortofolio();
+
+                // view portofolio // view balance;
                 //bankAccount.viewPortofolio();
                 //bankAccount.viewBalance();
 
                 break;
-            case 2: //transfer money(customer);
+            case 2: liviu.transferMoney();
 
                 break;
-            case 3: //deposit cash at ATM;
+            case 3: ana.depositATM(1000);
+
+                //deposit cash at ATM;
 //                try {
 //                    bankAccount.makeDeposit();
 //                } catch (DepositException e){}
 
 
                 break;
-            case 4: // create debit account;
+            case 4: liviu.createDebitAccount();
 
                 break;
-            case 5: //create credit account;
+            case 5:ana.createCreditAccount();
+
+                //create credit account;
                 //accountType.createCreditAccount();
 
 
